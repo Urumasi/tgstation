@@ -44,7 +44,9 @@
  * * force - Should this mob be FORCABLY dusted?
 */
 /mob/living/proc/dust(just_ash, drop_items, force)
-	death(TRUE)
+	// death(TRUE)
+	Stun(100, ignore_canstun=TRUE)
+	anchored = TRUE // So we don't get pushed into the SM by conveyor belt 20 times
 
 	if(drop_items)
 		unequip_everything()
@@ -52,12 +54,21 @@
 	if(buckled)
 		buckled.unbuckle_mob(src, force = TRUE)
 
-	dust_animation()
+	var/dusting_time = dust_animation()
+	addtimer(CALLBACK(src, .proc/after_dust, just_ash), dusting_time)
+
+/mob/living/proc/after_dust(just_ash = FALSE)
 	spawn_dust(just_ash)
-	QDEL_IN(src,5) // since this is sometimes called in the middle of movement, allow half a second for movement to finish, ghosting to happen and animation to play. Looks much nicer and doesn't cause multiple runtimes.
+	qdel(src)
 
 /mob/living/proc/dust_animation()
-	return
+	var/icon/dummy_icon = new(icon)
+	if(dummy_icon.Width() > 32 || dummy_icon.Height() > 32)
+		// since this is sometimes called in the middle of movement, allow half a second for movement to finish, ghosting to happen and animation to play. Looks much nicer and doesn't cause multiple runtimes.
+		return 0.5 SECONDS
+
+	var/obj/effect/abstract/displacement/temp/dust/dusting = new(loc, src)
+	return dusting.duration
 
 /mob/living/proc/spawn_dust(just_ash = FALSE)
 	new /obj/effect/decal/cleanable/ash(loc)
