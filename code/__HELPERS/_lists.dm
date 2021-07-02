@@ -252,6 +252,34 @@
 		. = L[picked]
 		L.Cut(picked,picked+1) //Cut is far more efficient that Remove()
 
+// Pick n item from a list and return them
+/proc/pick_amount(list/L, var/amount)
+	if(!L.len)
+		return list()
+
+	var/list/picked = list()
+	for(var/i in 1 to amount)
+		picked += pick(L)
+
+	return picked
+
+// Pick n unique item from a list and return them
+// If the amount is equal or greater than the list length, it returns a shuffled copy of the list
+/proc/pick_amount_unique(list/L, var/amount)
+	if(!L.len)
+		return list()
+	if(amount >= L.len)
+		return shuffle(L)
+
+	var/list/picking_from = L.Copy()
+	var/list/picked = list()
+	for(var/i in 1 to amount)
+		picked += pick_n_take(picking_from)
+		if(!picking_from.len)
+			break
+
+	return picked
+
 //Returns the top(last) element from the list and removes it from the list (typical stack function)
 /proc/pop(list/L)
 	if(L.len)
