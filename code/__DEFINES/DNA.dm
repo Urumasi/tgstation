@@ -40,24 +40,23 @@
 #define DNA_UNI_IDENTITY_BLOCKS 7
 
 /// This number needs to equal the total number of DNA blocks
-#define DNA_FEATURE_BLOCKS 16
+#define DNA_FEATURE_BLOCKS 15
 
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_ETHEREAL_COLOR_BLOCK 2
 #define DNA_LIZARD_MARKINGS_BLOCK 3
-#define DNA_LIZARD_TAIL_BLOCK 4
-#define DNA_SNOUT_BLOCK 5
-#define DNA_HORNS_BLOCK 6
-#define DNA_FRILLS_BLOCK 7
-#define DNA_SPINES_BLOCK 8
-#define DNA_HUMAN_TAIL_BLOCK 9
+#define DNA_TAIL_BLOCK 4
+#define DNA_LIZARD_TAIL_BLOCK 5
+#define DNA_SNOUT_BLOCK 6
+#define DNA_HORNS_BLOCK 7
+#define DNA_FRILLS_BLOCK 8
+#define DNA_SPINES_BLOCK 9
 #define DNA_EARS_BLOCK 10
 #define DNA_MOTH_WINGS_BLOCK 11
 #define DNA_MOTH_ANTENNAE_BLOCK 12
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
-#define DNA_MONKEY_TAIL_BLOCK 15
-#define DNA_POD_HAIR_BLOCK 16
+#define DNA_POD_HAIR_BLOCK 15
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -69,31 +68,25 @@
 #define FACEHAIR 3
 #define EYECOLOR 4
 #define LIPS 5
-#define NOBLOOD 6
 #define NOTRANSSTING 7
 #define NOZOMBIE 8
 #define NO_UNDERWEAR 9
-#define NOSTOMACH 10
-#define NO_DNA_COPY 11
-#define DRINKSBLOOD 12
+#define NO_DNA_COPY 10
+#define DRINKSBLOOD 11
+
 /// Use this if you want to change the race's color without the player being able to pick their own color. AKA special color shifting
-#define DYNCOLORS 13
-#define AGENDER 14
+#define DYNCOLORS 12
+#define AGENDER 13
 /// Do not draw eyes or eyeless overlay
-#define NOEYESPRITES 15
-/// Used for determining which wounds are applicable to this species.
-/// if we have flesh (can suffer slash/piercing/burn wounds, requires they don't have NOBLOOD)
-#define HAS_FLESH 16
-/// if we have bones (can suffer bone wounds)
-#define HAS_BONE 17
+#define NOEYESPRITES 14
 ///If we have a limb-specific overlay sprite
-#define HAS_MARKINGS 18
+#define HAS_MARKINGS 15
 /// Do not draw blood overlay
-#define NOBLOODOVERLAY 19
+#define NOBLOODOVERLAY 16
 ///No augments, for monkeys in specific because they will turn into fucking freakazoids https://cdn.discordapp.com/attachments/326831214667235328/791313258912153640/102707682-fa7cad80-4294-11eb-8f13-8c689468aeb0.png
-#define NOAUGMENTS 20
+#define NOAUGMENTS 17
 ///will be assigned a universal vampire themed last name shared by their department. this is preferenced!
-#define BLOOD_CLANS 21
+#define BLOOD_CLANS 18
 
 //organ slots
 #define ORGAN_SLOT_ADAMANTINE_RESONATOR "adamantine_resonator"
@@ -110,12 +103,11 @@
 #define ORGAN_SLOT_LIVER "liver"
 #define ORGAN_SLOT_LUNGS "lungs"
 #define ORGAN_SLOT_PARASITE_EGG "parasite_egg"
-#define ORGAN_SLOT_REGENERATIVE_CORE "hivecore"
+#define ORGAN_SLOT_MONSTER_CORE "monstercore"
 #define ORGAN_SLOT_RIGHT_ARM_AUG "r_arm_device"
 #define ORGAN_SLOT_LEFT_ARM_AUG "l_arm_device" //This one ignores alphabetical order cause the arms should be together
 #define ORGAN_SLOT_STOMACH "stomach"
 #define ORGAN_SLOT_STOMACH_AID "stomach_aid"
-#define ORGAN_SLOT_TAIL "tail"
 #define ORGAN_SLOT_THRUSTERS "thrusters"
 #define ORGAN_SLOT_TONGUE "tongue"
 #define ORGAN_SLOT_VOICE "vocal_cords"
@@ -142,9 +134,9 @@
 
 //organ defines
 #define STANDARD_ORGAN_THRESHOLD 100
-#define STANDARD_ORGAN_HEALING 50 / 100000
+#define STANDARD_ORGAN_HEALING (50 / 100000)
 /// designed to fail organs when left to decay for ~15 minutes
-#define STANDARD_ORGAN_DECAY 111 / 100000
+#define STANDARD_ORGAN_DECAY (111 / 100000)
 
 //used for the can_chromosome var on mutations
 #define CHROMOSOME_NEVER 0
@@ -180,9 +172,8 @@ GLOBAL_LIST_INIT(organ_process_order, list(
 	ORGAN_SLOT_HEART_AID,
 	ORGAN_SLOT_BRAIN_ANTIDROP,
 	ORGAN_SLOT_BRAIN_ANTISTUN,
-	ORGAN_SLOT_TAIL,
 	ORGAN_SLOT_PARASITE_EGG,
-	ORGAN_SLOT_REGENERATIVE_CORE,
+	ORGAN_SLOT_MONSTER_CORE,
 	ORGAN_SLOT_XENO_PLASMAVESSEL,
 	ORGAN_SLOT_XENO_HIVENODE,
 	ORGAN_SLOT_XENO_RESINSPINNER,

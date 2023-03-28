@@ -48,6 +48,7 @@
 	name = "cook's suit"
 	desc = "A suit which is given only to the most <b>hardcore</b> cooks in space."
 	icon_state = "chef"
+	inhand_icon_state = "chef"
 	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/civilian/chef/skirt
@@ -64,7 +65,6 @@
 	name = "head of personnel's uniform"
 	icon_state = "hop"
 	inhand_icon_state = "b_suit"
-	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt
 	name = "head of personnel's skirt"
@@ -98,7 +98,10 @@
 	name = "botanist's jumpsuit"
 	icon_state = "hydroponics"
 	inhand_icon_state = "g_suit"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/civilian_hydroponics
+
+/datum/armor/civilian_hydroponics
+	bio = 50
 
 /obj/item/clothing/under/rank/civilian/hydroponics/skirt
 	name = "botanist's jumpskirt"
@@ -114,7 +117,11 @@
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
 	icon_state = "janitor"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0)
+	inhand_icon_state = "janitor"
+	armor_type = /datum/armor/civilian_janitor
+
+/datum/armor/civilian_janitor
+	bio = 10
 
 /obj/item/clothing/under/rank/civilian/janitor/skirt
 	name = "janitor's jumpskirt"
@@ -203,7 +210,7 @@
 
 /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 	name = "blue suit"
-	desc = "A classy suit and tie."
+	desc = "A classy suit."
 	icon_state = "bluesuit"
 	inhand_icon_state = "b_suit"
 	can_adjust = TRUE
@@ -211,7 +218,7 @@
 
 /obj/item/clothing/under/rank/civilian/lawyer/bluesuit/skirt
 	name = "blue suitskirt"
-	desc = "A classy suitskirt and tie."
+	desc = "A classy suitskirt."
 	icon_state = "bluesuit_skirt"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -252,4 +259,6 @@
 	name = "grilling shorts"
 	desc = "For when all you want in life is to grill for god's sake!"
 	icon_state = "cookjorts"
+	inhand_icon_state = "cookjorts"
 	can_adjust = FALSE
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
